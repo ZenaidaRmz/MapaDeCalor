@@ -1,0 +1,21 @@
+******	reportar un delito 	********* 
+
+- ubicarlo en un mapa
+- evidencia
+- fecha
+- hora
+- tipo de delito
+
+--sitio web
+--mapa de calor por la incidencia delictiva de la zona
+
+
+---------****	Requisitos	******-------------------
+
+* cualquier persona acceda y manipule
+* filtro de referencia
+* demostrar cifras / acciones
+* estadisticas
+* validacion / candados de la informacion  
+* perfiles de usuario
+* validacion de indicadores y datos

@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><head profile="http://gmpg.org/xfn/11">
+<meta charset="utf-8">
+<style>
+#map-ahome {
+	margin: 0;
+	padding: 0;
+	height: 400px;
+	width:100%;
+    }
+</style>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script type="text/javascript" src="ob_js/start.js"></script><!--Carrega Mapa e Pins-->
+</head>
+    
+<!--MAPA -->
+
+<div id="map-ahome"></div>
+<!--<h3>Colonia:
+</h3>
+<p>  
+  <input type="combobox" name="colonia" id="colonia" />
+Castro Alves
+<input type="checkbox" name="escolas2" id="colonia 2" />
+Centro 
+<input type="checkbox" name="escolas3" id="escolas3" />
+Floresta
+<input type="checkbox" name="escolas4" id="escolas4" /> 
+Getúlio Vargas 
+<input type="checkbox" name="escolas6" id="escolas9" />
+Menino Deus 
+<input type="checkbox" name="escolas7" id="escolas10" />
+Pedras Brancas
+<input type="checkbox" name="escolas8" id="escolas11" />
+Popular 
+<input type="checkbox" name="escolas9" id="escolas12" /> 
+São Jorge 
+<input type="checkbox" name="escolas10" id="escolas13" /> 
+São José 
+<input type="checkbox" name="escolas11" id="escolas14" /> 
+São Judas 
+<input type="checkbox" name="escolas12" id="escolas15" /> 
+Taruma 
+<input type="checkbox" name="escolas13" id="escolas16" /> 
+Zona Rural
+</p>-->
+<h3>Colonia:
+  <select name="colonia" id="colonia">
+    <option value="0" selected="selected">TODOS LOS TIPOS</option>
+    <option value="Aguila Azteca">Aguila Azteca</option>
+    <option value="Alamo">Alamo</option>
+    <option value="Alamos">Alamos</option>
+    <option value="Alamos Country">Alamos Country</option>
+    <option value="Alamos I">Alamos I</option>
+    <option value="Alamos II">Alamos II</option>
+    <option value="FURTO EM VEICULOS-SOM/RADIO/CD">FURTO EM VEICULOS-SOM/RADIO/CD</option>
+    <option value="FURTO MAO GRANDE">FURTO MAO GRANDE</option>
+    <option value="FURTO QUALIFICADO">FURTO QUALIFICADO</option>
+    <option value="FURTO SIMLES EM RESIDENCIA">FURTO SIMLES EM RESIDENCIA</option>
+    <option value="FURTO/ARROMBAMENTO">FURTO/ARROMBAMENTO</option>
+    <option value="FURTO/ARROMBAMENTO ESTABELECIMENTO COMERCIAL">FURTO/ARROMBAMENTO ESTABELECIMENTO COMERCIAL</option>
+    <option value="HOMICIDIO">HOMICIDIO</option>
+    <option value="HOMICIDIO CULPOSO">HOMICIDIO CULPOSO</option>
+    <option value="HOMICIDIO DOLOSO">HOMICIDIO DOLOSO</option>
+    <option value="ROUBO A ESTABLECIMENTO COMERCIAL">ROUBO A ESTABLECIMENTO COMERCIAL</option>
+    <option value="ROUBO A ESTABLECIMENTO COMERCIAL COM LESOES">ROUBO A ESTABLECIMENTO COMERCIAL COM LESOES</option>
+    <option value="ROUBO A PEDESTRE">ROUBO A PEDESTRE</option>
+    <option value="ROUBO A PEDESTRE COM LESOES">ROUBO A PEDESTRE COM LESOES</option>
+  </select>
+</h3>
+<h3>Filtros:</h3>
+<p>Tipo:
+  <label for="bairros15"></label>
+  <select name="Tipo" id="Tipo">
+    <option value="0">Todos os Tipos</option>
+    <option value="Consumado">Consumado</option>
+    <option value="Tentado">Tentado</option>
+  </select>
+  <br />
+  Ano da Ocorrência:
+  <label for="Ano_Ocorrencia"></label>
+  <select name="Ano_Ocorrencia" id="Ano_Ocorrencia">
+    <option value="0">Todos os Anos</option>
+    <option value="2008">2008</option>
+    <option value="2009">2009</option>
+    <option value="2010">2010</option>
+    <option value="2011">2011</option>
+    <option value="2012">2012</option>
+    <option value="2013">2013</option>
+  </select>
+  <br />
+  Faixa de Hora:
+  <label for="bairros11"></label>
+  <select name="FaixaHora" id="FaixaHora">
+    <option value="0">Todos os Horários</option>
+    <option value="00:01 às 06:00">00:01 às 06:00</option>
+    <option value="06:01 às 12:00">06:01 às 12:00</option>
+    <option value="12:01 às 18:00">12:01 às 18:00</option>
+    <option value="18:01 às 24:00">18:01 às 24:00</option>
+  </select>
+  <br />
+  Dia da Semana:
+  <label for="DiaSemana"></label>
+  <select name="DiaSemana" id="DiaSemana">
+    <option value="0" selected="selected">Todos os Dias</option>
+    <option value="segunda-feira">Segunda-Feira</option>
+    <option value="terça-feira">Terça-Feira</option>
+    <option value="quarta-feira">Quarta-Feira</option>
+    <option value="quinta-feira">Quinta-Feira</option>
+    <option value="sexta-feira">Sexta-Feira</option>
+    <option value="sabado">Sábado</option>
+    <option value="domingo">Domingo</option>
+  </select>
+</p>
+<p>&nbsp;</p>
+<h1>Considerações do projeto:</h1>
+<ul>
+  <li>Este projeto é destinado a uma ONG que quer disponibilizar uma mapa geral da criminalidade com base em dados enviados pelo Governo do Estado (Secretaria de Segurança do RGS)</li>
+  <li>Em &quot;map-canvas&quot; será visualizado um Mapa de Intensidade das criminalidades conforme opções, filtros e tipos (abaixo do mapa).
+    <ul>
+      <li>Para o desenvolvimento do mapa deve-se utilizar algum tipo de interface da API do GoogleMaps, conforme exemplos abaixo:
+        <ul>
+          <li>https://developers.google.com/maps/documentation/javascript/examples/layer-heatmap</li>
+          <li>https://developers.google.com/maps/documentation/javascript/examples/layer-fusiontables-heatmap (* preferencialmente)</li>
+          <li>https://developers.google.com/maps/documentation/javascript/examples/circle-simple</li>
+        </ul>
+  </li></ul></li>
+</ul>
+<ul>
+  <li>Para fins de posicionamento (centralização) do Gráfico de Intensidade, utilizar a   Latitude + Longitude de acordo com os bairros abaixo:
+    <ul>
+      <li>Castro Aleves: -31.349748,-54.09024</li>
+      <li>Centro: -31.326788,-54.103862</li>
+      <li>Floresta: -31.337294,-54.136563</li>
+      <li>Getúlio Vargas: -31.318313,-54.092965</li>
+      <li>Menino Deus: -31.329006,-54.125562</li>
+      <li>Pedras Brancas: -31.336157,-54.071174</li>
+      <li>Popular: -31.317124,-54.120211</li>
+      <li>São Jorge: -31.303677,-54.109311</li>
+      <li>São José: -31.335227,-54.112717</li>
+      <li>São Judas: -31.334765,-54.086154</li>
+      <li>Taruma: -31.304092,-54.133837</li>
+      <li>Zona Rural: -31.266446,-54.139853</li>
+    </ul>
+  </li>
+  <li>Para montar o gráfico de intensidade, sempre utilizar a quantidade (COUNT) de ocorrências (linhas) de um determinado bairro/tipo (filtros).
+    <ul>
+      <li>Quanto mais associações (através do select), maior ou mais intenso o gráfico relacionado ao Mapa.</li>
+    </ul>
+  </li>
+  <li>Banco de Dados real a ser utilizado está na pasta &quot;ob_bd&quot;.</li>
+</ul>
+</html>
+    
+ 
+ 
